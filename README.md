@@ -83,7 +83,7 @@ print(sum_matrix)
 DSA_SparseMatrix/
 ├── main.py              # Main program entry point
 ├── sparse_matrix.py     # Core SparseMatrix implementation
-├── utils.py             # Utility functions(empty)
+├── utils.py             # Utility functions
 ├── sample_inputs/       # Sample matrix files
 │   ├── matrix1.txt
 │   ├── matrix2.txt
