@@ -1,33 +1,25 @@
 ## Implementation Details
 
-The `SparseMatrix` class uses a dictionary to store sparse data:
-- Key: `(row, col)` tuple
-- Value: The non-zero element value
+The `SparseMatrix` class uses a dictionary-based approach that:
+- Stores only non-zero elements as `(row, col): value` pairs
+- Optimizes memory usage for large sparse matrices
+- Provides efficient operations without processing zero elements
+- Uses no built-in template libraries or matrix packages
 
-This approach:
-- Minimizes memory usage for sparse matrices
-- Optimizes operations by only processing non-zero elements
-- Provides O(1) lookup/insertion for specific elements
-- Enables efficient iteration over non-zero elements
+The implementation follows mathematical rules for matrix operations:
+- Addition/subtraction requires identical dimensions
+- Multiplication requires the first matrix's column count to equal the second matrix's row count# Sparse Matrix Operations
 
-The core operations (add, subtract, multiply) follow standard matrix algorithms but skip zero-value computations for performance.# Sparse Matrix Operations
+A Python implementation for efficient sparse matrix operations designed for Data Structures and Algorithms coursework. This implementation optimizes both memory usage and runtime performance for large matrices.
 
-A Python library for efficient sparse matrix operations that conserves memory by storing only non-zero elements.
+## Assignment Overview
 
-## Overview
+This project satisfies the requirements for Programming Assignment 2: Sparse Matrix in the Data Structures and Algorithms for Engineers course. It implements:
 
-The `SparseMatrix` class uses a dictionary-based implementation to perform matrix operations efficiently:
-
-- Addition
-- Subtraction
-- Multiplication
-
-## Features
-
-- Memory-efficient sparse representation (only stores non-zero values)
-- File I/O with standard matrix format support
-- Automatic file discovery and matrix operation selection
-- Robust error handling and validation
+1. Memory-efficient sparse matrix representation
+2. Matrix loading from standardized text files
+3. Core matrix operations (addition, subtraction, multiplication)
+4. Proper validation and error handling
 
 ## Installation
 
@@ -49,8 +41,9 @@ The program automatically:
 2. Prompts for operation selection
 3. Performs calculation and saves the result
 
-### File Format
+## File Format
 
+The program processes sparse matrix files in the following format:
 ```
 rows=<number_of_rows>
 cols=<number_of_columns>
@@ -59,14 +52,20 @@ cols=<number_of_columns>
 ...
 ```
 
-Example (3×3 matrix with three non-zero values):
+Example:
 ```
-rows=3
-cols=3
-(0, 0, 5)
-(1, 2, 3)
-(2, 1, 7)
+rows=8433
+cols=3180
+(0, 381, -694)
+(0, 128, -838)
+(0, 639, 857)
 ```
+
+Notes:
+- Whitespace is ignored
+- All values must be integers
+- Only specified positions have non-zero values
+- Input validation ensures proper formatting
 
 ## Project Structure
 
@@ -84,25 +83,21 @@ DSA_SparseMatrix/
 
 ## API Reference
 
-```python
-# Create a matrix
-matrix = SparseMatrix(rows, cols)
+The `SparseMatrix` class provides the following functionality:
 
-# Load from file
+```python
+# Constructor
+matrix = SparseMatrix(rows, cols)  # Create empty matrix with dimensions
+
+# Class method for loading from file
 matrix = SparseMatrix.from_file(filepath)
 
-# Access/modify elements
-value = matrix.get_element(row, col)  # Returns 0 if not set
+# Element access/modification
+value = matrix.get_element(row, col)  # Returns 0 for unset positions
 matrix.set_element(row, col, value)   # Removes element if value is 0
 
 # Matrix operations
-result = matrix1.add(matrix2)         # Matrices must have same dimensions
-result = matrix1.subtract(matrix2)    # Matrices must have same dimensions
-result = matrix1.multiply(matrix2)    # matrix1.cols must equal matrix2.rows
+result = matrix1.add(matrix2)         # Raises ValueError if dimensions mismatch
+result = matrix1.subtract(matrix2)    # Raises ValueError if dimensions mismatch
+result = matrix1.multiply(matrix2)    # Raises ValueError if incompatible dimensions
 ```
-
-The implementation validates:
-- Matrix dimension compatibility
-- Proper file formatting
-- Index boundaries
-- Element format integrity
