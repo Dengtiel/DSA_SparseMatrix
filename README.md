@@ -67,6 +67,16 @@ cols=3
 (1, 2, 3)
 (2, 1, 7)
 ```
+
+### Code Example
+
+```python
+from sparse_matrix import SparseMatrix
+
+# Create or load matrices
+matrix1 = SparseMatrix.from_file("sample_inputs/matrix1.txt")
+matrix2 = SparseMatrix.from_file("sample_inputs/matrix2.txt")
+
 # Perform operations
 sum_matrix = matrix1.add(matrix2)
 diff_matrix = matrix1.subtract(matrix2)
@@ -79,7 +89,6 @@ print(sum_matrix)
 ## Project Structure
 
 ```
-
 DSA_SparseMatrix/
 ├── main.py              # Main program entry point
 ├── sparse_matrix.py     # Core SparseMatrix implementation
