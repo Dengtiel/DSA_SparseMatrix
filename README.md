@@ -68,31 +68,13 @@ cols=3
 (2, 1, 7)
 ```
 
-### Code Example
-
-```python
-from sparse_matrix import SparseMatrix
-
-# Create or load matrices
-matrix1 = SparseMatrix.from_file("sample_inputs/matrix1.txt")
-matrix2 = SparseMatrix.from_file("sample_inputs/matrix2.txt")
-
-# Perform operations
-sum_matrix = matrix1.add(matrix2)
-diff_matrix = matrix1.subtract(matrix2)
-prod_matrix = matrix1.multiply(matrix2)  # Requires compatible dimensions
-
-# Output result
-print(sum_matrix)
-```
-
 ## Project Structure
 
 ```
 DSA_SparseMatrix/
 ├── main.py              # Main program entry point
 ├── sparse_matrix.py     # Core SparseMatrix implementation
-├── utils.py             # Utility functions
+├── utils.py             # Empty placeholder file
 ├── sample_inputs/       # Sample matrix files
 │   ├── matrix1.txt
 │   ├── matrix2.txt
